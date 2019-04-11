@@ -1,0 +1,156 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h3 class="card-title">Cadastro de hóspede</h3>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="dadosPessoais-tab" data-toggle="tab" href="#dadosPessoais" role="tab"
+                  aria-controls="dadosPessoais" aria-selected="true">Dados pessoais</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pagamento-tab" data-toggle="tab" href="#pagamento" role="tab"
+                  aria-controls="pagamento" aria-selected="false">Dados de pagamento</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade active show" id="dadosPessoais" role="tabpanel"
+                aria-labelledby="dadosPessoais-tab">
+                <form [formGroup]="form">
+                  <div class="row">
+                    <div class="form-group col-md-5">
+                      <label for="inputNome">Nome Completo*</label>
+                      <input formControlName="nome" type="text" class="form-control" id="inputNome">
+                    </div>
+                    <div class="form-group datepicker col-md-3">
+                      <label for="inputDataNascimento">Data de nascimento</label>
+                      <input formControlName="dataNascimento" type="text" class="form-control" id="inputDataNascimento">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputCpf">CPF*</label>
+                      <input formControlName="cpf" type="text" class="form-control" id="inputCpf">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-3">
+                      <label for="inputNacionalidade">Nacionalidade*</label>
+                      <input formControlName="nacionalidade" type="text" class="form-control" id="inputNacionalidade">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputEmail">Email*</label>
+                      <input formControlName="email" type="text" class="form-control" id="inputEmail">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputTelefone">Telefone*</label>
+                      <input formControlName="telefone" type="text" class="form-control" id="inputTelefone">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" formControlName="sexo" id="inlineRadio1"
+                            value="Masculino"> Masculino
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" formControlName="sexo" id="inlineRadio2"
+                            value="Feminino"> Feminino
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div formGroupName="endereco">
+                    <div class="row">
+                      <div class="form-group col-md-3">
+                        <label for="inputCep">CEP*</label>
+                        <input formControlName="cep" type="text" class="form-control" id="inputCep"
+                          (blur)="consultaCEP()">
+                      </div>
+                      <div class="form-group col-md-5">
+                        <label for="inputRua">Rua</label>
+                        <input formControlName="rua" type="text" class="form-control" id="inputRua">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputBairro">Bairro</label>
+                        <input formControlName="bairro" type="text" class="form-control" id="inputBairro">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-2">
+                        <label for="inputNumero">Número*</label>
+                        <input formControlName="numero" type="text" class="form-control" id="inputNumero">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputCidade">Cidade</label>
+                        <input formControlName="cidade" type="text" class="form-control" id="inputCidade">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputEstado">Estado</label>
+                        <input formControlName="estado" type="text" class="form-control" id="inputEstado">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPais">País</label>
+                        <input formControlName="pais" type="text" class="form-control" id="inputPais">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="pagamento" role="tabpanel" aria-labelledby="pagamento-tab">
+                <form [formGroup]="form">
+                  <div formGroupName="pagamento">
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="inputNumeroCartao">Número do cartão*</label>
+                        <input formControlName="numeroCartao" type="text" class="form-control" id="inputNumeroCartao">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group datepicker col-md-2">
+                        <label for="inputDataValidade">Data de validade*</label>
+                        <input formControlName="dataValidade" type="text" class="form-control" id="inputDataValidade">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputNomeTitular">Nome do titular*</label>
+                        <input formControlName="nomeTitular" type="text" class="form-control" id="inputNomeTitular">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-2">
+                        <label for="inputCodigoSeguranca">Código de segurança*</label>
+                        <input formControlName="codigoSeguranca" type="number" class="form-control"
+                          id="inputCodigoSeguranca">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <br>
+              <br>
+              <ul class="nav nav-tabs pull-right" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <button mat-raised-button (click)="cancel()" class="btn btn-success"
+                    aria-selected="false">Cancelar</button>
+                </li>
+                <li class="nav-item">
+                  <button mat-raised-button type="submit" (click)="submit()"
+                    class="btn btn-success pull-right">Salvar</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

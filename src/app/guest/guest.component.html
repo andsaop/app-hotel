@@ -1,0 +1,64 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <h4 class="nav-tabs-title">Hóspedes cadastrados</h4>
+                <ul class="nav nav-tabs justify-content-end" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a class="btn btn-white btn-round text-gray" title="Adicionar novo hóspede" data-toggle="tab" (click)="newGuest()">
+                      <i class="material-icons">add</i> Adicionar
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <th>#id</th>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th class="text-right">
+                    <button type="button" title="Exportar todos" class="btn btn-default btn-link btn-lg btn-just-icon"
+                      (click)="exportGuests()">
+                      <i class="material-icons">backup</i>
+                    </button>
+                  </th>
+                </thead>
+                <tbody *ngFor="let guest of guests">
+                  <tr>
+                    <td>{{guest.id}}</td>
+                    <td class="btn btn-primary btn-link" data-guest="guest" (click)="detailsGuest()" data-toggle="modal"
+                      data-target="#exampleModal">{{guest.nome}}
+                    </td>
+                    <td>{{guest.cpf}}</td>
+                    <td>{{guest.email}}</td>
+                    <td>{{guest.telefone}}</td>
+                    <td class="td-actions text-right">
+                      <button mat-raised-button type="button" title="Editar hóspede" class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        (click)="editGuest(guest.id)">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button class="btn btn-danger btn-link" title="Deletar hóspede" (click)="removeGuest(guest.id)">
+                        <i class="material-icons">delete_outline</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
